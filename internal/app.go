@@ -29,7 +29,7 @@ func (a *App) Start() {
 
 	for update := range updates {
 		if err := a.handleUpdate(update); err != nil {
-			a.notify(err)
+			go a.notify(err)
 		}
 	}
 }
@@ -37,7 +37,7 @@ func (a *App) Start() {
 func (a *App) handleUpdate(update tgApi.Update) error {
 	defer func() {
 		if err := recover(); err != nil {
-			a.notify(err)
+			go a.notify(err)
 		}
 	}()
 

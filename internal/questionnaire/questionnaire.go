@@ -193,6 +193,13 @@ func (q *Questionnaire) finish(chat models.Chat) error {
 	msg = tgApi.NewMessage(q.cfg.MainChatID, text)
 	msg.ParseMode = "markdown"
 	_, err = q.bot.Send(msg)
+	if err != nil {
+		return err
+	}
+
+	msg = tgApi.NewMessage(q.cfg.TechChatID, text)
+	msg.ParseMode = "markdown"
+	_, err = q.bot.Send(msg)
 	return err
 }
 
