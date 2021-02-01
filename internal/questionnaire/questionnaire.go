@@ -1,11 +1,12 @@
 package questionnaire
 
 import (
-	"github.com/Andrianov/psychoHelpBOT/internal/config"
 	"errors"
 	"fmt"
+
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
+	"github.com/Andrianov/psychoHelpBOT/internal/config"
 	"github.com/Andrianov/psychoHelpBOT/internal/models"
 	"github.com/Andrianov/psychoHelpBOT/internal/storage"
 )

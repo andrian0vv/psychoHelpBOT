@@ -31,9 +31,6 @@ func main() {
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 
-	u := tgApi.NewUpdate(0)
-	u.Timeout = 60
-
 	storage := storage.NewMemoryStorage()
 
 	router := router.New()
