@@ -3,7 +3,7 @@ package storage
 import (
 	"errors"
 
-	"dev/tgbot/cmd/service/internal/models"
+	"github.com/Andrianov/psychoHelpBOT/internal/models"
 )
 
 type Storage interface {

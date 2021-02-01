@@ -3,7 +3,7 @@ package storage
 import (
 	"sync"
 
-	"dev/tgbot/cmd/service/internal/models"
+	"github.com/Andrianov/psychoHelpBOT/internal/models"
 )
 
 type memory struct {

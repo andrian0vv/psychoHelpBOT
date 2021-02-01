@@ -1,6 +1,6 @@
 package questionnaire
 
-import "dev/tgbot/cmd/service/internal/models"
+import "github.com/Andrianov/psychoHelpBOT/internal/models"
 
 var FlowSteps = []models.Step{
 	{

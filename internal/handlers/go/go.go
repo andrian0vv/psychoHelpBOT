@@ -3,10 +3,10 @@ package _go
 import (
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
-	"dev/tgbot/cmd/service/internal/config"
-	"dev/tgbot/cmd/service/internal/handlers"
-	"dev/tgbot/cmd/service/internal/questionnaire"
-	"dev/tgbot/cmd/service/internal/storage"
+	"github.com/Andrianov/psychoHelpBOT/internal/config"
+	"github.com/Andrianov/psychoHelpBOT/internal/handlers"
+	"github.com/Andrianov/psychoHelpBOT/internal/questionnaire"
+	"github.com/Andrianov/psychoHelpBOT/internal/storage"
 )
 
 type Handler struct {

@@ -6,14 +6,14 @@ import (
 
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
-	"dev/tgbot/cmd/service/internal"
-	"dev/tgbot/cmd/service/internal/config"
-	"dev/tgbot/cmd/service/internal/handlers/cancel"
-	_go "dev/tgbot/cmd/service/internal/handlers/go"
-	"dev/tgbot/cmd/service/internal/handlers/message"
-	"dev/tgbot/cmd/service/internal/handlers/start"
-	"dev/tgbot/cmd/service/internal/router"
-	"dev/tgbot/cmd/service/internal/storage"
+	"github.com/Andrianov/psychoHelpBOT/internal"
+	"github.com/Andrianov/psychoHelpBOT/internal/config"
+	"github.com/Andrianov/psychoHelpBOT/internal/handlers/cancel"
+	_go "github.com/Andrianov/psychoHelpBOT/internal/handlers/go"
+	"github.com/Andrianov/psychoHelpBOT/internal/handlers/message"
+	"github.com/Andrianov/psychoHelpBOT/internal/handlers/start"
+	"github.com/Andrianov/psychoHelpBOT/internal/router"
+	"github.com/Andrianov/psychoHelpBOT/internal/storage"
 )
 
 func main() {

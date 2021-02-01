@@ -1,4 +1,4 @@
-module dev/tgbot/cmd/service
+module github.com/Andrianov/psychoHelpBOT
 
 go 1.14
 

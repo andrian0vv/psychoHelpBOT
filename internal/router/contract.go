@@ -5,7 +5,7 @@ import (
 
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
-	"dev/tgbot/cmd/service/internal/handlers"
+	"github.com/Andrianov/psychoHelpBOT/internal/handlers"
 )
 
 type Router interface {

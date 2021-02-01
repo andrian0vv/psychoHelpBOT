@@ -3,8 +3,8 @@ package internal
 import (
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
-	"dev/tgbot/cmd/service/internal/config"
-	"dev/tgbot/cmd/service/internal/router"
+	"github.com/Andrianov/psychoHelpBOT/internal/config"
+	"github.com/Andrianov/psychoHelpBOT/internal/router"
 )
 
 type App struct {

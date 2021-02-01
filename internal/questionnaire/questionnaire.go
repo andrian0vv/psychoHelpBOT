@@ -1,13 +1,13 @@
 package questionnaire
 
 import (
-	"dev/tgbot/cmd/service/internal/config"
+	"github.com/Andrianov/psychoHelpBOT/internal/config"
 	"errors"
 	"fmt"
 	tgApi "github.com/go-telegram-bot-api/telegram-bot-api"
 
-	"dev/tgbot/cmd/service/internal/models"
-	"dev/tgbot/cmd/service/internal/storage"
+	"github.com/Andrianov/psychoHelpBOT/internal/models"
+	"github.com/Andrianov/psychoHelpBOT/internal/storage"
 )
 
 type Questionnaire struct {
