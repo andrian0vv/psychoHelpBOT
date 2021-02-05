@@ -46,7 +46,9 @@ const (
 Кураторками/ами проекта по оказанию психологической помощи являются: 
 [Анна Край](https://instagram.com/_to_the_edge_)
 [Игнат Пименов](https://instagram.com/_eto_normalno)
-[Ольга Размахова](https://instagram.com/za_900_let)`
+[Ольга Размахова](https://instagram.com/za_900_let)
+
+Для запуска анкеты напишите боту /go`
 
 	cancelMessage = "Заполнение анкеты отменено"
 
