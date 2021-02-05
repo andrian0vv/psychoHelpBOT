@@ -18,7 +18,7 @@ type Questionnaire struct {
 }
 
 const (
-	stopMessage = `Внимание, важная информация: наш чат бот временно не работает. 
+	_ = `Внимание, важная информация: наш чат бот временно не работает. 
 
 Наш аккаунт, принимающий заявки, временно заблокировали. Мы уже подали апелляцию и делаем все возможное, чтобы восстановить работу. 
 
@@ -37,9 +37,16 @@ const (
 
 Также центр «Сестры» оказывает психологическую поддержку тем, «кто остро переживает происходящее сейчас».`
 
-	_ = `Здравствуйте. Вас ждёт анкета из шести вопросов. Указанные данные будут переданы только в чат к куратору
+	startMessage = `Данный чат-бот служит сбору заявок от людей, пострадавших во время мирных митингов РФ, а также от тех, кто остро проживает актуальные события. 
 
-Для запуска анкеты напишите боту /go`
+Команда психологов, психотерапевтов и психиатров, объединенная движением «Психология за Права Человека» в проекте помощи людям, которые переживают насилие в Беларуси, работает с людьми из России. Мы убеждены в том, что все, несмотря на политические взгляды и выбор участвовать или нет в уличных акциях - имеют право на то, чтобы получить бесплатную качественную психологическую помощь в ситуации социальной и политической неопределенности, острого нарушения безопасности, насилия со стороны силовых структур. 
+
+Сводки по проекту каждый вечер публикуются в [инстаграме](https://instagram.com/_eto_normalno).
+
+Кураторками/ами проекта по оказанию психологической помощи являются: 
+[Анна Край](https://instagram.com/_to_the_edge_)
+[Игнат Пименов](https://instagram.com/_eto_normalno)
+[Ольга Размахова](https://instagram.com/za_900_let)`
 
 	cancelMessage = "Заполнение анкеты отменено"
 
@@ -59,7 +66,8 @@ func (q *Questionnaire) Intro(update tgApi.Update) error {
 		return errors.New("message is nil")
 	}
 
-	msg := tgApi.NewMessage(update.Message.Chat.ID, stopMessage)
+	msg := tgApi.NewMessage(update.Message.Chat.ID, startMessage)
+	msg.ParseMode = "markdown"
 	_, err := q.bot.Send(msg)
 	return err
 }
@@ -87,6 +95,7 @@ func (q *Questionnaire) Start(update tgApi.Update) error {
 	}
 
 	chatID := update.Message.Chat.ID
+	userName := update.Message.Chat.UserName
 
 	err := q.storage.Delete(chatID)
 	if err != nil {
@@ -100,7 +109,8 @@ func (q *Questionnaire) Start(update tgApi.Update) error {
 	}
 
 	chat := models.Chat{
-		ID: chatID,
+		ID:       chatID,
+		UserName: userName,
 		Flow: &models.Flow{
 			Steps: steps,
 		},
@@ -202,7 +212,7 @@ func (q *Questionnaire) finish(chat models.Chat) error {
 		return err
 	}
 
-	text := fmt.Sprintf("Новая заявка от %d!\n", chat.ID)
+	text := fmt.Sprintf("Новая заявка от @%s!\n", chat.UserName)
 	for _, step := range chat.Flow.Steps {
 		text += fmt.Sprintf("*%s*: %s\n", step.Name, step.Answer)
 	}
