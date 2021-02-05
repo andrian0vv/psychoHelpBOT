@@ -194,13 +194,13 @@ func (q *Questionnaire) saveAnswer(chat *models.Chat, update tgApi.Update) error
 		if update.CallbackQuery != nil {
 			step.Answer = update.CallbackQuery.Data
 		} else {
-			return q.sorry(*chat)
+			return nil
 		}
 	} else {
 		if update.Message != nil {
 			step.Answer = update.Message.Text
 		} else {
-			return q.sorry(*chat)
+			return nil
 		}
 	}
 
@@ -216,18 +216,16 @@ func (q *Questionnaire) finish(chat models.Chat) error {
 
 	text := fmt.Sprintf("Новая заявка от @%s!\n", chat.UserName)
 	for _, step := range chat.Flow.Steps {
-		text += fmt.Sprintf("*%s*: %s\n", step.Name, step.Answer)
+		text += fmt.Sprintf("%s: %s\n", step.Name, step.Answer)
 	}
 
 	msg = tgApi.NewMessage(q.cfg.MainChatID, text)
-	msg.ParseMode = "markdown"
 	_, err = q.bot.Send(msg)
 	if err != nil {
 		return err
 	}
 
 	msg = tgApi.NewMessage(q.cfg.TechChatID, text)
-	msg.ParseMode = "markdown"
 	_, err = q.bot.Send(msg)
 	return err
 }
