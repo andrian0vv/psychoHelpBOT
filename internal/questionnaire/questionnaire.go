@@ -59,6 +59,8 @@ const (
 	sorryMessage = "Не удалось обработать ответ, разбираемся..."
 )
 
+var index = 0
+
 func New(cfg *config.Config, bot *tgApi.BotAPI, storage storage.Storage) *Questionnaire {
 	return &Questionnaire{cfg, bot, storage}
 }
@@ -214,7 +216,9 @@ func (q *Questionnaire) finish(chat models.Chat) error {
 		return err
 	}
 
-	text := fmt.Sprintf("Новая заявка от @%s!\n", chat.UserName)
+	index++
+
+	text := fmt.Sprintf("%d Новая заявка от @%s !\n", index, chat.UserName)
 	for _, step := range chat.Flow.Steps {
 		text += fmt.Sprintf("%s: %s\n", step.Name, step.Answer)
 	}
